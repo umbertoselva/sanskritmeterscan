@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block content %}
+	<!-- larger box -->
+
+	<div class="content-section col-12 col-md-8 col-sm-12 m-auto">
+
+		<!-- change <pre> to <pre class="pre-bg"> -->
+
+		<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="The_Sanskrit_Meterscan_0"></a>The Sanskrit Meterscan</h1>
+		<p class="has-line-data" data-line-start="2" data-line-end="3">The Sanskrit Meterscan is a web tool that outputs an interlinear metrical scansion of poetic verses composed in the Sanskrit language.</p>
+		<p class="has-line-data" data-line-start="4" data-line-end="5">An input such as:</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="6" data-line-end="9">yé triṣaptā́ḥ pariyánti
+víśvā rūpā́ṇi bíbhrataḥ |
+vācás pátir bálā téṣāṃ
+tanvò adyá dadhātu me ||1||</code></pre>
+		<p class="has-line-data" data-line-start="9" data-line-end="10">will produce the following output</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="11" data-line-end="17">yé triṣaptā́ḥ pariyánti
+HLHHLLHL
+víśvā rūpā́ṇi bíbhrataḥ |
+HHHHLHLL
+vācás pátir bálā téṣāṃ
+HHLHLHHH
+tanvò adyá dadhātu me ||1||
+HHHLLHLH</code></pre>
+		<p class="has-line-data" data-line-start="17" data-line-end="18">The metrical notation is the following:</p>
+		<ul>
+		<li class="has-line-data" data-line-start="18" data-line-end="19">H = ‘Heavy’ syllable</li>
+		<li class="has-line-data" data-line-start="19" data-line-end="21">L = ‘Light’ syllable</li>
+		</ul>
+		<h2 class="code-line" data-line-start=21 data-line-end=22 ><a id="Development_21"></a>Development</h2>
+		<p class="has-line-data" data-line-start="23" data-line-end="24">A first demo of the Python script that outputs the metrical scansion was designed by Kristen De Joseph in 2014. Umberto Selva revised the Python script and developed the web app around it with Python (Flask), HTML, CSS and Javascript in 2020.</p>
+		<h2 class="code-line" data-line-start=25 data-line-end=26 ><a id="How_to_use_it_25"></a>How to use it</h2>
+		<p class="has-line-data" data-line-start="27" data-line-end="28">The Sanksrit Meterscan works with plain text and .txt files only.</p>
+		<p class="has-line-data" data-line-start="29" data-line-end="30">You can choose to:</p>
+		<ul>
+		<li class="has-line-data" data-line-start="30" data-line-end="35">Upload a .txt file (max size 2MB) containing your verses
+		<ul>
+		<li class="has-line-data" data-line-start="31" data-line-end="32">Choose your file and press the “Scan File” button</li>
+		<li class="has-line-data" data-line-start="32" data-line-end="35">A scansion will be prepared and you will be asked whether you want to
+		<ul>
+		<li class="has-line-data" data-line-start="33" data-line-end="34">Download the scansion as a .txt file (the filename will be your original file’s name followed by _SCAN.txt)</li>
+		<li class="has-line-data" data-line-start="34" data-line-end="35">Display the scansion as HTML in a new tab</li>
+		</ul>
+		</li>
+		</ul>
+		</li>
+		<li class="has-line-data" data-line-start="35" data-line-end="39">Paste plain text in the textarea
+		<ul>
+		<li class="has-line-data" data-line-start="36" data-line-end="39">Press the “Scan Text” button
+		<ul>
+		<li class="has-line-data" data-line-start="37" data-line-end="39">A scansion will be displayed as HTML in a new tab</li>
+		</ul>
+		</li>
+		</ul>
+		</li>
+		</ul>
+		<h3 class="code-line" data-line-start=39 data-line-end=40 ><a id="Leading_and_trailing_notations_39"></a>Leading and trailing notations</h3>
+		<p class="has-line-data" data-line-start="40" data-line-end="41">Please check the checkbox if, on each single line of your text, the verses are preceded by some verse number notation, as in the following example:</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="42" data-line-end="47">Allowed input (with checkbox checked):
+&lt;1.1.1a&gt;   śaṃ no devīr abhiṣṭaya 
+&lt;1.1.1b&gt;   āpo bhavantu pītaye | 
+&lt;1.1.1c&gt;   śaṃ yor abhi sravantu naḥ ||</code></pre>
+		<p class="has-line-data" data-line-start="47" data-line-end="48">N.B. If some lines feature a preceding verse number notation and some lines don’t, as in the following example, the program will <strong>not</strong> produce a correct output.</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="49" data-line-end="54">Not-allowed input:
+&lt;1.1.1a&gt;   śaṃ no devīr abhiṣṭaya 
+āpo bhavantu pītaye | 
+śaṃ yor abhi sravantu naḥ || </code></pre>
+		<p class="has-line-data" data-line-start="54" data-line-end="55">That is because, if the checkbox is checked, the program will very simply ignore all the text before the first whitespace on each line for the sake of the scansion. Therefore, in the example above, not only the leading notation on line 1a would be ignored, but also the words <em>āpo</em> (on line 1b) and <em>śaṃ</em> (on line 1c), and the resulting scansion would be incorrect. For the same reason, if your leading notation contains whitespaces, only the portion preceding the first whitespace will be removed, and the output will once again be incorrect.</p>
+		<p class="has-line-data" data-line-start="56" data-line-end="57">The program should be able to automatically remove any existing trailing notation on any line without problems, regardless of whether each line features it or whether only some do or whether they feature different types of notation. Therefore texts as the following (typical of the GRETIL library) should pose no problems.</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="59" data-line-end="63">Allowed input (checkbox unchecked):
+asty uttarasyāṃ diśi devatātmā himālayo nāma nagādhirājaḥ /
+pūrvāparau toyanidhī vigāhya sthitaḥ pṛthivyā iva mānadaṇḍaḥ // Ks_1.1 //</code></pre>
+		<h2 class="code-line" data-line-start=64 data-line-end=65 ><a id="Vedic_Syllable_restoration__Caesura_64"></a>Vedic (Syllable restoration - Caesura)</h2>
+		<p class="has-line-data" data-line-start="66" data-line-end="67">The Vedic version of the Meterscan has the following features:</p>
+		<ul>
+		<li class="has-line-data" data-line-start="67" data-line-end="68">it tolerates accents</li>
+		<li class="has-line-data" data-line-start="68" data-line-end="69">it counts the vowel preceding <em>ch</em> as heavy</li>
+		<li class="has-line-data" data-line-start="69" data-line-end="70">it applies the <em>vocalis ante vocalem corripitur</em> rule</li>
+		<li class="has-line-data" data-line-start="70" data-line-end="72">but it <strong>does not</strong> automate syllable restoration (as in <em>tanvè</em> &gt; <em>tanúve</em> )</li>
+		</ul>
+		<p class="has-line-data" data-line-start="72" data-line-end="73">If the verses consist of 11 or 12 syllables and there is a whitespace after the 4th or 5th syllable, it automatically <strong>attempts</strong> to insert a caesura (represented by the “|” sign).</p>
+		<p class="has-line-data" data-line-start="74" data-line-end="75">To illustrate the functionalities just described, please look at the following example:</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="76" data-line-end="81">10.129.1a     nā́sad āsīn nó sád āsīt tadā́nīṃ
+10.129.1b     nā́sīd rájo nó vyòmā paró yát
+10.129.1c     kím ā́varīvaḥ kúha kásya śármann
+10.129.1d     ámbhaḥ kím āsīd gáhanaṃ gabhīrám</code></pre>
+		<p class="has-line-data" data-line-start="81" data-line-end="82">The above input will yield the following output (with checkbox checked):</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="83" data-line-end="92">10.129.1a     nā́sad āsīn nó sád āsīt tadā́nīṃ
+HLHH|H|LHHLHH
+10.129.1b     nā́sīd rájo nó vyòmā paró yát
+HHLHHHHLHL
+10.129.1c     kím ā́varīvaḥ kúha kásya śármann
+LHLHH|LLHLHH
+10.129.1d     ámbhaḥ kím āsīd gáhanaṃ gabhīrám
+HHLHH|LLHLHL</code></pre>
+		<p class="has-line-data" data-line-start="92" data-line-end="95">As you can see, the Vedic Meterscan was able to recognize that line 1a is an 11-syllable line. It thus attempted to insert the caesura. In fact it inserted two, after the 4th and after the 5th syllable, because theoretically the caesura could appear in either places.<br>
+		As for line 1b, it contains the word <em>vyòma</em>, in which a syllable should be restored (<em>víoma</em>). The Vedic Meterscan is not programmed to operate syllable restoration. Therefore it counted 10 syllables in total and did not attempt to insert a caesura.<br>
+		In lines c and d, the Vedic Meterscan correctly counted 11 syllables and thus tried to insert a caesura, which could only go after the 5th syllable in either lines.</p>
+		<p class="has-line-data" data-line-start="96" data-line-end="97">N.B. If the inputted text features two 11 or 12-syllable lines in the same row of text, the Vedic Meterscan will “perceive” them as a single line, it will count a total of more than 11/12 syllables, and thus it will not insert any caesura. For instance, the following input</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="98" data-line-end="101">10.129.01ab     nā́sad āsīn nó sád āsīt tadā́nīṃ nā́sīd rájo nó vyòmā paró yát |
+10.129.01cd     kím ā́varīvaḥ kúha kásya śármann ámbhaḥ kím āsīd gáhanaṃ gabhīrám ||</code></pre>
+		<p class="has-line-data" data-line-start="101" data-line-end="102">will yield</p>
+		<pre class="pre-bg"><code class="has-line-data" data-line-start="103" data-line-end="108">10.129.01ab     nā́sad āsīn nó sád āsīt tadā́nīṃ nā́sīd rájo nó vyòmā paró yát |
+HLHHHLHHLHHHHLHHHHLHL
+10.129.01cd     kím ā́varīvaḥ kúha kásya śármann ámbhaḥ kím āsīd gáhanaṃ gabhīrám ||
+LHLHHLLHLHHHHLHHLLHLHL</code></pre>
+		<p class="has-line-data" data-line-start="108" data-line-end="109">We hope that, despite these limited functionalities, Vedic scholars will find this tool useful too.</p>
+
+	</div>
+{% endblock content %}
+

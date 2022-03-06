@@ -1,0 +1,63 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+  height: 100%;
+  min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+/*background for the about page citations */
+.pre-bg {
+  background-color: #ebdeab;
+  /*#f2e2a2;*/
+  /*#f2cda2;*/
+/*  #f5c793;
+*/}
+
+/*background for the Sanskrit navbar*/
+.bg-steel {
+  background-color: #056375; /*or 015663 or 056e68 navbar color 5f788a*/
+}
+
+/*background for the Vedic navbar*/
+.bg-purple {
+  background-color: #240461;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.navbar-brand {
+  font-size: xx-large;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+/*custom classes to trigger the javascript function to lower the buggy Bootstrap checkbox*/
+.lower-me {
+  
+}
+
+.lowered {
+  display: inline-block;
+  margin-top: 15px;
+}

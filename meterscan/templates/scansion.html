@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+	<!-- first box -->
+
+	{% if lang == 'Vedic' %}
+
+	<div style="margin-top: 20px">
+		<form class="content-section justify-content-center col-12 col-md-5 col-sm-10 m-auto" style="margin-top: 30px" action="/download_vedic_file" method="get">
+
+			<legend class="border-bottom mb-2"  style="text-align: center">Download your scansion as a file</legend>
+			
+			<div class="col text-center">
+				<button id="download_button" name="submit_button" class="btn btn-primary" value="download" type="submit">Download</button>
+			</div>
+
+			<legend class="border-bottom mb-2 mt-4" style="text-align: center">Display your scansion in a new tab</legend>
+
+			<div class="col text-center">
+				<button formaction="{{ url_for('display_vedic_file') }}" formtarget="_blank" id="display_button" name="submit_button" class="btn btn-primary mb-1" value="display" type="submit">Display</button>
+			</div>
+		</form>
+	</div>
+
+	{% else %}
+
+	<div style="margin-top: 20px">
+		<form class="content-section justify-content-center col-12 col-md-5 col-sm-10 m-auto" style="margin-top: 30px" action="/download_file" method="get">
+
+			<legend class="border-bottom mb-2"  style="text-align: center">Download your scansion as a file</legend>
+			
+			<div class="col text-center">
+				<button id="download_button" name="submit_button" class="btn btn-primary" value="download" type="submit">Download</button>
+			</div>
+
+			<legend class="border-bottom mb-2 mt-4" style="text-align: center">Display your scansion in a new tab</legend>
+
+			<div class="col text-center">
+				<button formaction="{{ url_for('display_file') }}" formtarget="_blank" id="display_button" name="submit_button" class="btn btn-primary mb-1" value="display" type="submit">Display</button>
+			</div>
+		</form>
+	</div>
+
+	{% endif %}
+{% endblock content %}
